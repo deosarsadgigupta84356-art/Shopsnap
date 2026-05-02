@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShopSnap</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+      color: white;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
+    .search-box {
+      background: white;
+      color: black;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #F97316;
+      color: white;
+      cursor: pointer;
+    }
+
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+
+    .features {
+      background: white;
+      color: black;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 12px;
+    }
+
+    .feature {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>ShopSnap 🚀</h1>
+    <p>Turn local shops into digital businesses instantly</p>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search-box">
+    <input type="text" id="shopName" placeholder="Search or create shop">
+
+    <button onclick="createPage()">Create Shop Page</button>
+
+    <button onclick="importMaps()">📍 Search Nearby Shops</button>
+
+    <!-- REAL MAP EMBED -->
+    <iframe src="https://maps.google.com/maps?q=bangalore&output=embed"></iframe>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="features">
+    <h3>Why ShopSnap?</h3>
+
+    <div class="feature">⚡ Instant website creation</div>
+    <div class="feature">📍 Map-based discovery</div>
+    <div class="feature">📦 Online delivery ready</div>
+    <div class="feature">📱 Mobile-friendly shops</div>
+  </div>
+
+  <script>
+    function createPage() {
+      let name = document.getElementById("shopName").value;
+
+      if(name === "") {
+        alert("Enter shop name");
+        return;
+      }
+
+      localStorage.setItem("shopName", name);
+      window.location.href = "loading.html";
+    }
+
+     function importMaps() {
+      let demoShops = [
+       "Bangalore Bakery",
+       "Fresh Grocery Store",
+       "City Clothing Hub",
+       "Urban Hardware Store"
+      ];
+
+       // pick random shop (feels real)
+      let randomShop = demoShops[Math.floor(Math.random() * demoShops.length)];
+
+      localStorage.setItem("shopName", randomShop);
+
+       window.location.href = "loading.html";
+     }
+  </script>
+
+</body>
+</html>
